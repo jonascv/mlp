@@ -1,35 +1,27 @@
 from abc import ABC, abstractmethod
-import datetime
 
-
-class Transport(ABC):
-    """AN interface for each mood of transport"""
-
+class Route(ABC):
+    __instance = None
+        
     @abstractmethod
-    def operation(self, speed):
-        """Each class will provide its own implementation using this function."""
+    def instance(cls):
+        if cls.__instance is None:
+            cls.__instance = cls()
+        return cls.__instance
+    
+    def operation(self):
         pass
 
-
-class PublicTransport(Transport):
-    speed = 50
-
+class SuperSafe(Route):
     def operation(self, distance):
-        estimated_hours = distance / self.speed
-        return str(datetime.timedelta(hours=estimated_hours))
+        print("Client: Route is set to Super Safe.")
 
 
-class Car(Transport):
-    speed = 90
-
+class Safe(Route):
     def operation(self, distance):
-        estimated_hours = distance / self.speed
-        return str(datetime.timedelta(hours=estimated_hours))
+        print("Client: Route is set to Safe.")
 
 
-class Bike(Transport):
-    speed = 75
-
+class NotSafe(Route):
     def operation(self, distance):
-        estimated_hours = distance / self.speed
-        return str(datetime.timedelta(hours=estimated_hours))
+        print("Client: Route is set to Not Safe.")
