@@ -18,5 +18,5 @@ class Pedestrian:
 if __name__ == '__main__':
 
    pedestrian_1 = Pedestrian("Pedestrian 1")
-   pedestrian_1.setRoute(SuperSafe) # Client: Route is set to Super Safe.
+   pedestrian_1.setRoute(SuperSafe)
    pedestrian_1.move()
